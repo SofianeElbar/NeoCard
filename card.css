@@ -1,0 +1,119 @@
+:root {
+  --primary-rgb: 28 161 82;
+}
+
+.screen {
+  position: relative;
+  width: 500px;
+  border: 3px solid rgb(var(--primary-rgb) / 80%);
+  aspect-ratio: 10 / 16;
+  border-radius: 1rem;
+  background-color: rgb(var(--primary-rgb) / 15%);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+@keyframes pan-overlay {
+  from {
+    background-position: 0% 0%;
+  }
+
+  to {
+    background-position: 0% -100%;
+  }
+}
+
+.screen_overlay {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background: linear-gradient(
+    rgb(var(--primary-rgb) / 0.15),
+    rgb(var(--primary-rgb) / 0.15) 3px,
+    transparent 3px,
+    transparent 9px
+  );
+  background-size: 100% 9px;
+  height: 100%;
+  width: 100%;
+  animation: pan-overlay 22s infinite linear;
+}
+
+@keyframes pan-image {
+  0% {
+    background-position: 0% 100%;
+    background-size: 200%;
+  }
+
+  20% {
+    background-position: 30% 35%;
+    background-size: 200%;
+  }
+
+  20.0001% {
+    /* -- View 2 -- */
+    background-position: 60% 85%;
+    background-size: 200%;
+  }
+
+  40% {
+    background-position: 49% 81%;
+    background-size: 100%;
+  }
+
+  40.0001% {
+    /* -- View 3 -- */
+    background-position: 80% 42%;
+    background-size: 150%;
+  }
+
+  60% {
+    background-position: 84% 33%;
+    background-size: 100%;
+  }
+
+  60.0001% {
+    /* -- View 4 -- */
+    background-position: 42% 80%;
+    background-size: 150%;
+  }
+
+  80% {
+    background-position: 33% 84%;
+    background-size: 100%;
+  }
+
+  80.0001% {
+    /* -- View 5 -- */
+    background-position: 0% 0%;
+    background-size: 300%;
+  }
+
+  100% {
+    background-position: 100% 0%;
+    background-size: 200%;
+  }
+}
+
+.screen > .screen_image {
+  background-image: url("pxfuel.jpg");
+  height: 100%;
+  width: 100%;
+  background-size: 300%;
+  background-position: center;
+  filter: sepia(100%) hue-rotate(60deg);
+  animation: pan-image 22s linear infinite;
+}
+
+.screen-content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+  font-family: "Space Mono", monospace;
+  text-shadow: 0px 0px 0.5rem purple;
+  left: 180px;
+  top: 700px;
+}
